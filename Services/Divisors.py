@@ -1,5 +1,4 @@
 import math
-from itertools import combinations
 
 class Divisors:
     def __init__(self):
@@ -23,9 +22,3 @@ class Divisors:
     def get_all_abundant_in_range(self, upperlimit:int) -> dict[int, bool]:
         numbers = {i: self.is_abundant(i) for i in range(1,upperlimit)}
         return [k for k in numbers.keys() if numbers[k]]
-
-test = Divisors()
-test1 = test.get_all_abundant_in_range(28124)
-test2 = set([sum(i) for i in map(sorted, combinations(set(test1), 2))])
-test3 = set(range(28124))
-print(sum(test3.difference(test2)))
