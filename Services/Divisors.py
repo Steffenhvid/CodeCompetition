@@ -10,11 +10,11 @@ class Divisors:
         i.e. 12 -> [1,2,3,4,6]
         '''
         divisors = [1]
-        for i in range(2, math.ceil(math.sqrt(number))):
+        for i in range(2, math.floor(math.sqrt(number))+1):
             if(number % i == 0):
                 divisors.append(i)
                 divisors.append(int(number/i))
-        return divisors
+        return list(set(divisors))
     
     def is_abundant(self, number:int) -> bool:
         return sum(self.get_proper_divisors_off(number)) > number

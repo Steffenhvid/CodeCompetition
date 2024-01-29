@@ -1,4 +1,5 @@
 from itertools import permutations
+import math
 
 def primes_sieve_of_eratosthenes(limit:int) -> list[int]:
     is_prime = [True] * (limit + 1)
@@ -40,5 +41,18 @@ def find_circular_primes(limit:int) -> int:
                 print(str(p) + ': ' + str(permutation))
                 i += 1
     return i
+
+def is_prime(x:int) -> bool:
+    if(x <= 0):
+        return False
+    if x in [1,2]:
+        return True
+    for i in range(2,math.floor(math.sqrt(x))+1):
+        if x % i == 0:
+            return False
+        
+    return True
+
+
 
 
