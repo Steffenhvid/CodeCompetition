@@ -1,16 +1,24 @@
 from itertools import permutations
 import math
 
-def primes_sieve_of_eratosthenes(limit:int) -> list[int]:
-    is_prime = [True] * (limit + 1)
-    is_prime[0] = is_prime[1] = False  
-
-    for p in range(2, int(limit**0.5) + 1):
-        if is_prime[p]:            
-            for i in range(p * p, limit + 1, p):
-                is_prime[i] = False
-
-    primes = [p for p in range(2, limit + 1) if is_prime[p]]
+def primes_sieve_of_eratosthenes(n:int) -> list[int]:
+    prime = [True for i in range(n+1)]
+    p = 2
+    while (p * p <= n):
+ 
+        # If prime[p] is not
+        # changed, then it is a prime
+        if (prime[p]):
+ 
+            # Update all multiples of p
+            for i in range(p * p, n+1, p):
+                prime[i] = False
+        p += 1
+    primes = []
+    # Print all prime numbers
+    for p in range(2, n+1):
+        if prime[p]:
+            primes.append(p)
     return primes
 
 def all_sieve_of_eratosthenes(limit:int) -> dict:
@@ -47,7 +55,7 @@ def is_prime(x:int) -> bool:
         return False
     if x in [2]:
         return True
-    for i in range(2,math.floor(math.sqrt(x))+1):
+    for i in range(3,math.floor(math.sqrt(x))+1):
         if x % i == 0:
             return False
         
