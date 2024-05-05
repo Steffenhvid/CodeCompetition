@@ -1,23 +1,9 @@
 import numpy as np
+import sys
+sys.path.append(r".\\")
 
-def is_number_increasing(number):
-    numberstring = str(number)
-    for i in range(len(numberstring) - 1):
-        if numberstring[i] > numberstring[i+1]:
-            return False
-        
-    return True
+from Services.NumberAnalysis import is_number_bouncy
 
-def is_number_decreasing(number):
-    numberstring = str(number)
-    for i in range(len(numberstring) - 1):
-        if numberstring[i] < numberstring[i+1]:
-            return False
-        
-    return True
-
-def is_number_bouncy(number):
-    return not is_number_increasing(number) and not is_number_decreasing(number)
 
 ratio = 0.0
 number_of_bouncies = 0
